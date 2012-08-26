@@ -3,3 +3,8 @@ download status
 download accept terms of use
 hint
 project --topLevelPackage com.mycompany.runfun
+hint
+jpa setup --provider HIBERNATE --database POSTGRES
+hint
+// [failed] entity jpa --class ~.domain.User --table usr --testAutomatically yes
+entity jpa --class ~.domain.User --table usr --testAutomatically yes --permitReservedWords 

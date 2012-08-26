@@ -8,3 +8,6 @@ psql -d runfun -U developer
 # Git config for this project
 git config user.name "Saeid Moradi"
 git config user.email "saeid3@gmail.com"
+
+# Maven commands
+mvn clean test
