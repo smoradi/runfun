@@ -10,3 +10,6 @@ hint
 entity jpa --class ~.domain.User --table usr --testAutomatically yes --permitReservedWords 
 hint
 field string --class ~.domain.User --fieldName username --notNull --unique yes
+hint
+hint web mvc
+web mvc setup
