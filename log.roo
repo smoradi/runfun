@@ -13,3 +13,4 @@ field string --class ~.domain.User --fieldName username --notNull --unique yes
 hint
 hint web mvc
 web mvc setup
+web mvc scaffold --class ~.web.controller.UserController --backingType ~.domain.User

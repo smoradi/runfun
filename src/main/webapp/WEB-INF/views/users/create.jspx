@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_mycompany_runfun_domain_User" modelAttribute="user" path="/users" render="${empty dependencies}" z="7h6YGjjjb5waZbM2IXWzqfBwT14=">
+        <field:input field="username" id="c_com_mycompany_runfun_domain_User_username" required="true" z="SIpIPXus7RXRUKTRqLRb9M9W5pE="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_mycompany_runfun_domain_User" render="${not empty dependencies}" z="0T1bNKH+CESqLdIDRX6jsbyktzM="/>
+</div>
