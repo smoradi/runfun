@@ -1,0 +1,6 @@
+# PostgreSQL database setup
+psql -d template1 -U postgres
+CREATE USER developer WITH NOSUPERUSER CREATEDB NOINHERIT ENCRYPTED PASSWORD '2';
+CREATE TABLESPACE tableworkspace OWNER developer LOCATION '/ws/etc/pgsql_developer_tablespace/';
+CREATE DATABASE runfun WITH OWNER=developer TABLESPACE=tableworkspace;
+psql -d runfun -U developer
