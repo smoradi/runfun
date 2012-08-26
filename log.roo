@@ -8,3 +8,5 @@ jpa setup --provider HIBERNATE --database POSTGRES
 hint
 // [failed] entity jpa --class ~.domain.User --table usr --testAutomatically yes
 entity jpa --class ~.domain.User --table usr --testAutomatically yes --permitReservedWords 
+hint
+field string --class ~.domain.User --fieldName username --notNull --unique yes

@@ -24,7 +24,13 @@ privileged aspect UserDataOnDemand_Roo_DataOnDemand {
     
     public User UserDataOnDemand.getNewTransientUser(int index) {
         User obj = new User();
+        setUsername(obj, index);
         return obj;
+    }
+    
+    public void UserDataOnDemand.setUsername(User obj, int index) {
+        String username = "username_" + index;
+        obj.setUsername(username);
     }
     
     public User UserDataOnDemand.getSpecificUser(int index) {
