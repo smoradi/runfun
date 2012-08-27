@@ -7,5 +7,13 @@
             <menu:item id="i_user_new" messageCode="global_menu_new" url="/users?form" z="Zv1m8u2rG+JFKcvJ+AHVVK0ey24="/>
             <menu:item id="i_user_list" messageCode="global_menu_list" url="/users?page=1&amp;size=${empty param.size ? 10 : param.size}" z="4MY4uybxa60Q1G2rlI5bOwg+sm0="/>
         </menu:category>
+        <menu:category id="c_land" z="tGQcvtoUoVzAqwkRr6FasZBBg3I=">
+            <menu:item id="i_land_new" messageCode="global_menu_new" url="/lands?form" z="H2LTlx6uUmdxem1MUg5borAZMU8="/>
+            <menu:item id="i_land_list" messageCode="global_menu_list" url="/lands?page=1&amp;size=${empty param.size ? 10 : param.size}" z="waIKhhCeKfYexGX2y+ZgvJudiGw="/>
+        </menu:category>
+        <menu:category id="c_record" z="vvWXWZKWPdSDsOdSxLfRZjUVD10=">
+            <menu:item id="i_record_new" messageCode="global_menu_new" url="/records?form" z="IASEpm2t2HtUhlLSx7MqBKbJOYY="/>
+            <menu:item id="i_record_list" messageCode="global_menu_list" url="/records?page=1&amp;size=${empty param.size ? 10 : param.size}" z="eHyDkV13JqoEpSwDjqp8HeZWSLk="/>
+        </menu:category>
     </menu:menu>
 </div>

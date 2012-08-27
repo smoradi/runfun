@@ -3,6 +3,8 @@
 
 package com.mycompany.runfun.web.controller;
 
+import com.mycompany.runfun.domain.Land;
+import com.mycompany.runfun.domain.Record;
 import com.mycompany.runfun.domain.User;
 import com.mycompany.runfun.web.controller.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -12,6 +14,54 @@ import org.springframework.format.FormatterRegistry;
 privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService {
     
     declare @type: ApplicationConversionServiceFactoryBean: @Configurable;
+    
+    public Converter<Land, String> ApplicationConversionServiceFactoryBean.getLandToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.mycompany.runfun.domain.Land, java.lang.String>() {
+            public String convert(Land land) {
+                return new StringBuilder().append(land.getName()).append(' ').append(land.getDistance()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, Land> ApplicationConversionServiceFactoryBean.getIdToLandConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.mycompany.runfun.domain.Land>() {
+            public com.mycompany.runfun.domain.Land convert(java.lang.Long id) {
+                return Land.findLand(id);
+            }
+        };
+    }
+    
+    public Converter<String, Land> ApplicationConversionServiceFactoryBean.getStringToLandConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.mycompany.runfun.domain.Land>() {
+            public com.mycompany.runfun.domain.Land convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Land.class);
+            }
+        };
+    }
+    
+    public Converter<Record, String> ApplicationConversionServiceFactoryBean.getRecordToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.mycompany.runfun.domain.Record, java.lang.String>() {
+            public String convert(Record record) {
+                return new StringBuilder().append(record.getDate()).append(' ').append(record.getLaps()).append(' ').append(record.getTime()).append(' ').append(record.getComment()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, Record> ApplicationConversionServiceFactoryBean.getIdToRecordConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.mycompany.runfun.domain.Record>() {
+            public com.mycompany.runfun.domain.Record convert(java.lang.Long id) {
+                return Record.findRecord(id);
+            }
+        };
+    }
+    
+    public Converter<String, Record> ApplicationConversionServiceFactoryBean.getStringToRecordConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.mycompany.runfun.domain.Record>() {
+            public com.mycompany.runfun.domain.Record convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Record.class);
+            }
+        };
+    }
     
     public Converter<User, String> ApplicationConversionServiceFactoryBean.getUserToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.mycompany.runfun.domain.User, java.lang.String>() {
@@ -38,6 +88,12 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     }
     
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
+        registry.addConverter(getLandToStringConverter());
+        registry.addConverter(getIdToLandConverter());
+        registry.addConverter(getStringToLandConverter());
+        registry.addConverter(getRecordToStringConverter());
+        registry.addConverter(getIdToRecordConverter());
+        registry.addConverter(getStringToRecordConverter());
         registry.addConverter(getUserToStringConverter());
         registry.addConverter(getIdToUserConverter());
         registry.addConverter(getStringToUserConverter());
