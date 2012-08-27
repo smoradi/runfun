@@ -14,3 +14,5 @@ hint
 hint web mvc
 web mvc setup
 web mvc scaffold --class ~.web.controller.UserController --backingType ~.domain.User
+hint entities
+entity jpa --class ~.domain.Land

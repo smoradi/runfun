@@ -5,9 +5,14 @@ CREATE TABLESPACE tableworkspace OWNER developer LOCATION '/ws/etc/pgsql_develop
 CREATE DATABASE runfun WITH OWNER=developer TABLESPACE=tableworkspace;
 psql -d runfun -U developer
 
-# Git config for this project
+# Git commands
 git config user.name "Saeid Moradi"
 git config user.email "saeid3@gmail.com"
+git diff
+git diff --staged
+git add .
+git commit
 
 # Maven commands
 mvn clean test
+mvn jetty:run
