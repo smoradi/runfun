@@ -20,4 +20,10 @@ hint fields
 field string --fieldName name --notNull
 field number --fieldName distance --type java.lang.Double --notNull
 field reference --fieldName user --type ~.domain.User --joinColumnName user_id --notNull --cardinality MANY_TO_ONE --permitReservedWords
-
+entity jpa --class ~.domain.Record
+field date --fieldName date --type java.util.Date --notNull --permitReservedWords 
+field reference --fieldName land --type ~.domain.Land --joinColumnName land_id --notNull --cardinality MANY_TO_ONE 
+field reference --fieldName user --type ~.domain.Land --joinColumnName user_id --notNull --cardinality MANY_TO_ONE --permitReservedWords 
+field number --fieldName laps --type java.lang.Integer --min 1
+field number --fieldName time --type java.lang.Long --notNull --permitReservedWords 
+field string --fieldName comment
