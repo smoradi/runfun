@@ -16,3 +16,8 @@ web mvc setup
 web mvc scaffold --class ~.web.controller.UserController --backingType ~.domain.User
 hint entities
 entity jpa --class ~.domain.Land
+hint fields
+field string --fieldName name --notNull
+field number --fieldName distance --type java.lang.Double --notNull
+field reference --fieldName user --type ~.domain.User --joinColumnName user_id --notNull --cardinality MANY_TO_ONE --permitReservedWords
+
