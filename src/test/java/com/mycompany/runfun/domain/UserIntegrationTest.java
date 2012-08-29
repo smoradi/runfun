@@ -3,7 +3,7 @@ package com.mycompany.runfun.domain;
 import org.junit.Test;
 import org.springframework.roo.addon.test.RooIntegrationTest;
 
-@RooIntegrationTest(entity = User.class)
+@RooIntegrationTest(entity = User.class, remove = false)
 public class UserIntegrationTest {
 
     @Test

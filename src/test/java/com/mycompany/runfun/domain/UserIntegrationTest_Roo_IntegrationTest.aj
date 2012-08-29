@@ -106,16 +106,4 @@ privileged aspect UserIntegrationTest_Roo_IntegrationTest {
         Assert.assertNotNull("Expected 'User' identifier to no longer be null", obj.getId());
     }
     
-    @Test
-    public void UserIntegrationTest.testRemove() {
-        User obj = dod.getRandomUser();
-        Assert.assertNotNull("Data on demand for 'User' failed to initialize correctly", obj);
-        Long id = obj.getId();
-        Assert.assertNotNull("Data on demand for 'User' failed to provide an identifier", id);
-        obj = User.findUser(id);
-        obj.remove();
-        obj.flush();
-        Assert.assertNull("Failed to remove 'User' with identifier '" + id + "'", User.findUser(id));
-    }
-    
 }

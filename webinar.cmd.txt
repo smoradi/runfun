@@ -16,3 +16,4 @@ git commit
 # Maven commands
 mvn clean test
 mvn jetty:run
+mvn eclipse:eclipse

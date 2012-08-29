@@ -1,6 +1,12 @@
-<div xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<div 
+  xmlns:spring="http://www.springframework.org/tags" 
+  xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+  xmlns:form="http://www.springframework.org/tags/form"
+  xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" 
+  xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
   <jsp:directive.page contentType="text/html;charset=UTF-8" />
   <jsp:output omit-xml-declaration="yes" />
+  
   <spring:message var="app_name" code="application_name" htmlEscape="false" />
   <spring:message var="title" code="welcome_titlepane" arguments="${app_name}" htmlEscape="false" />
   <util:panel id="title" title="${title}">
@@ -10,5 +16,12 @@
     <p>
       <spring:message code="welcome_text" />
     </p>
+  </util:panel>
+  <util:panel id="enter" title="Enter here">
+    <spring:url value="/enter/user" var="enter_user_url" />
+    <form:form action="${enter_user_url}" method="POST" modelAttribute="user" enctype="application/x-www-form-urlencoded]" >
+      <field:input id="id_username" field="username" required="true" />
+      <input type="submit" value="Enter" />
+    </form:form>
   </util:panel>
 </div>

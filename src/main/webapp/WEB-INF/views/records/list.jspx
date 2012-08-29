@@ -3,13 +3,13 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_com_mycompany_runfun_domain_Record" items="${records}" z="JSawPuqiMBEObqz/QVFtChJvOVM=">
-        <table:table data="${records}" id="l_com_mycompany_runfun_domain_Record" path="/records" z="G/1NI5ULjhe3b8EH0h2cTH1/ApY=">
+        <table:table data="${records}" id="l_com_mycompany_runfun_domain_Record" path="/records/${username}" update="false" z="user-managed">
             <table:column date="true" dateTimePattern="${record_date_date_format}" id="c_com_mycompany_runfun_domain_Record_date" property="date" z="yTIxqeps5sJkU61TdWZf/avU1MI="/>
             <table:column id="c_com_mycompany_runfun_domain_Record_land" property="land" z="9ayTn8eppjr7cSIGuqWbKEfFCZI="/>
-            <table:column id="c_com_mycompany_runfun_domain_Record_user" property="user" z="8d8BFBfqwWSbXP4zI1HfUF4sXDg="/>
             <table:column id="c_com_mycompany_runfun_domain_Record_laps" property="laps" z="eoMICZh23cUEbVC6P8+RaJZ8SPg="/>
             <table:column id="c_com_mycompany_runfun_domain_Record_time" property="time" z="Rs0lvvK8+oSkB9Cwwv0DZS1AAl0="/>
             <table:column id="c_com_mycompany_runfun_domain_Record_comment" property="comment" z="WIVE0SaM6S5R2QKdV/v/3iefwdo="/>
+            <table:column id="c_com_mycompany_runfun_domain_Record_user" property="user" z="8d8BFBfqwWSbXP4zI1HfUF4sXDg="/>
         </table:table>
     </page:list>
 </div>

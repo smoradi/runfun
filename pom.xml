@@ -399,7 +399,7 @@
                 <version>2.7</version>
                 <!-- Note 2.8 does not work with AspectJ aspect path -->
                 <configuration>
-                    <downloadSources>true</downloadSources>
+                    <downloadSources>false</downloadSources>
                     <downloadJavadocs>false</downloadJavadocs>
                     <wtpversion>2.0</wtpversion>
                     <additionalBuildcommands>

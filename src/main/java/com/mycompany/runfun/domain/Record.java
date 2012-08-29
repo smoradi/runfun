@@ -1,6 +1,8 @@
 package com.mycompany.runfun.domain;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -14,7 +16,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord
+@RooJpaActiveRecord(finders = { "findRecordsByUserAndIdEquals", "findRecordsByUser" })
 public class Record {
 
     @NotNull
@@ -27,10 +29,9 @@ public class Record {
     @JoinColumn(name = "land_id")
     private Land land;
 
-    @NotNull
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Land user;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Min(1L)
     private Integer laps;
@@ -39,4 +40,13 @@ public class Record {
     private Long time;
 
     private String comment;
+    
+    public static List<Record> findRecordEntries(User user, int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM Record o WHERE o.user = :user", Record.class).setParameter("user", user).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+
+    public static long countRecords(User user) {
+        return entityManager().createQuery("SELECT COUNT(o) FROM Record o WHERE o.user = :user", Long.class).setParameter("user", user).getSingleResult();
+    }
+
 }

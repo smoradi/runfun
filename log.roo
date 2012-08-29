@@ -23,10 +23,20 @@ field reference --fieldName user --type ~.domain.User --joinColumnName user_id -
 entity jpa --class ~.domain.Record
 field date --fieldName date --type java.util.Date --notNull --permitReservedWords 
 field reference --fieldName land --type ~.domain.Land --joinColumnName land_id --notNull --cardinality MANY_TO_ONE 
-field reference --fieldName user --type ~.domain.Land --joinColumnName user_id --notNull --cardinality MANY_TO_ONE --permitReservedWords 
+field reference --fieldName user --type ~.domain.User --joinColumnName user_id --notNull --cardinality MANY_TO_ONE --permitReservedWords 
 field number --fieldName laps --type java.lang.Integer --min 1
 field number --fieldName time --type java.lang.Long --notNull --permitReservedWords 
 field string --fieldName comment
 web mvc scaffold --class ~.web.controller.LandController --backingType ~.domain.Land
 web mvc scaffold --class ~.web.controller.RecordController --backingType ~.domain.Record
-
+hint finders
+finder list --class ~.domain.User
+finder add findUsersByUsernameEquals
+finder list --class ~.domain.Land
+finder add findLandsByUser
+finder add --finderName findLandsByUserAndIdEquals --class ~.domain.Land
+finder list --class ~.domain.Record
+finder list --class ~.domain.Record --depth 2
+finder list --class ~.domain.Record --depth 2 --filter User
+finder add --finderName findRecordsByUserAndIdEquals
+finder add --finderName findRecordsByUser

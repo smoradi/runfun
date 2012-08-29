@@ -5,6 +5,7 @@ package com.mycompany.runfun.domain;
 
 import com.mycompany.runfun.domain.Land;
 import com.mycompany.runfun.domain.Record;
+import com.mycompany.runfun.domain.User;
 import java.util.Date;
 
 privileged aspect Record_Roo_JavaBean {
@@ -25,11 +26,11 @@ privileged aspect Record_Roo_JavaBean {
         this.land = land;
     }
     
-    public Land Record.getUser() {
+    public User Record.getUser() {
         return this.user;
     }
     
-    public void Record.setUser(Land user) {
+    public void Record.setUser(User user) {
         this.user = user;
     }
     

@@ -5,7 +5,7 @@
     <form:update id="fu_com_mycompany_runfun_domain_Record" modelAttribute="record" path="/records" versionField="Version" z="WQ2nSYpOhyAo6Y6YGPnAER8vyoE=">
         <field:datetime dateTimePattern="${record_date_date_format}" field="date" id="c_com_mycompany_runfun_domain_Record_date" required="true" z="PB85JTVNc+cdOBVxdN/zHtomvpw="/>
         <field:select field="land" id="c_com_mycompany_runfun_domain_Record_land" itemValue="id" items="${lands}" path="/lands" required="true" z="n2hEpKK18WhSjvDkBFU/9j8Pn0I="/>
-        <field:select field="user" id="c_com_mycompany_runfun_domain_Record_user" itemValue="id" items="${lands}" path="/lands" required="true" z="83dUPyq+gqd5vDjIjDmOfHekCN0="/>
+        <field:select field="user" id="c_com_mycompany_runfun_domain_Record_user" itemValue="id" items="${users}" path="/users" required="true" z="UGnFunTTbzhbAiBTBF4ESmE3Q/g="/>
         <field:input field="laps" id="c_com_mycompany_runfun_domain_Record_laps" min="1" required="true" validationMessageCode="field_invalid_integer" z="sXceAq/oa/4/HbXPOX5t3hnaGSQ="/>
         <field:input field="time" id="c_com_mycompany_runfun_domain_Record_time" required="true" validationMessageCode="field_invalid_integer" z="FhwaAsBvGjSZWsn3vjNtL84aM40="/>
         <field:input field="comment" id="c_com_mycompany_runfun_domain_Record_comment" z="TZTs3Gm8AzeY/wyTG/t9q3mNJ2c="/>
