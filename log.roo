@@ -40,3 +40,6 @@ finder list --class ~.domain.Record --depth 2
 finder list --class ~.domain.Record --depth 2 --filter User
 finder add --finderName findRecordsByUserAndIdEquals
 finder add --finderName findRecordsByUser
+help
+help security
+security setup
