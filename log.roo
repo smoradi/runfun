@@ -43,3 +43,15 @@ finder add --finderName findRecordsByUser
 help
 help security
 security setup
+// following commands will fail in Spring-roo 1.2.2.RELEASE
+osgi start --url http://s.digitalface.ca/jasperoo-latest
+osgi start --url file:///home/webinar/Desktop/ca.digitalface.jasperoo-0.1.5-RELEASE.jar
+osgi ps
+osgi uninstall --bundleSymbolicName ca.digitalface.jasperoo
+// following commands will pass in Spring-roo 1.1.2.RELEASE
+osgi start --url file:///home/webinar/Desktop/ca.digitalface.jasperoo-0.1.5-RELEASE.jar
+osgi ps
+jasperoo setup
+jasperoo add --type ~.domain.Record
+// switch back to Spring-roo 1.2.2.RELEASE
+finder add --class ~.domain.Record --finderName findRecordsById

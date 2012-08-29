@@ -16,4 +16,9 @@ public class User {
     @NotNull
     @Column(nullable = false, unique = true)
     private String username;
+    
+    @Override
+    public String toString() {
+    	return getUsername();
+    }
 }

@@ -10,6 +10,14 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Record_Roo_Finder {
     
+    public static TypedQuery<Record> Record.findRecordsById(Long id) {
+        if (id == null) throw new IllegalArgumentException("The id argument is required");
+        EntityManager em = Record.entityManager();
+        TypedQuery<Record> q = em.createQuery("SELECT o FROM Record AS o WHERE o.id = :id", Record.class);
+        q.setParameter("id", id);
+        return q;
+    }
+    
     public static TypedQuery<Record> Record.findRecordsByUser(User user) {
         if (user == null) throw new IllegalArgumentException("The user argument is required");
         EntityManager em = Record.entityManager();

@@ -1,8 +1,8 @@
 package com.mycompany.runfun.domain;
 
+import ca.digitalface.jasperoo.RooJasperoo;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -16,7 +16,8 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(finders = { "findRecordsByUserAndIdEquals", "findRecordsByUser" })
+@RooJasperoo
+@RooJpaActiveRecord(finders = { "findRecordsByUserAndIdEquals", "findRecordsByUser", "findRecordsById" })
 public class Record {
 
     @NotNull
@@ -40,7 +41,7 @@ public class Record {
     private Long time;
 
     private String comment;
-    
+
     public static List<Record> findRecordEntries(User user, int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Record o WHERE o.user = :user", Record.class).setParameter("user", user).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
@@ -48,5 +49,4 @@ public class Record {
     public static long countRecords(User user) {
         return entityManager().createQuery("SELECT COUNT(o) FROM Record o WHERE o.user = :user", Long.class).setParameter("user", user).getSingleResult();
     }
-
 }

@@ -1,29 +1,66 @@
-<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
-  <jsp:output omit-xml-declaration="yes" />
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:form="http://www.springframework.org/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" version="2.0">
+  <jsp:output omit-xml-declaration="yes"/>
 
-  <jsp:directive.attribute name="id" type="java.lang.String" required="true" rtexprvalue="true" description="The identifier for this tag (do not change!)" />
-  <jsp:directive.attribute name="items" type="java.util.Collection" required="true" rtexprvalue="true" description="The form backing object name" />
-  <jsp:directive.attribute name="label" type="java.lang.String" required="false" rtexprvalue="true" description="The label used for this object, will default to a message bundle if not supplied" />
-  <jsp:directive.attribute name="labelPlural" type="java.lang.String" required="false" rtexprvalue="true" description="The label used for this object, will default to a message bundle if not supplied" />
-  <jsp:directive.attribute name="render" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Indicate if the contents of this tag and all enclosed tags should be rendered (default 'true')" />
-  <jsp:directive.attribute name="openPane" type="java.lang.Boolean" required="false" rtexprvalue="true" description="Control if the title pane is opened or closed by default (default: true)" />
-  <jsp:directive.attribute name="z" type="java.lang.String" required="false" description="Used for checking if element has been modified (to recalculate simply provide empty string value)" />
+  <jsp:directive.attribute description="The identifier for this tag (do not change!)" name="id" required="true" rtexprvalue="true" type="java.lang.String"/>
+  <jsp:directive.attribute description="The form backing object name" name="items" required="true" rtexprvalue="true" type="java.util.Collection"/>
+  <jsp:directive.attribute description="The label used for this object, will default to a message bundle if not supplied" name="label" required="false" rtexprvalue="true" type="java.lang.String"/>
+  <jsp:directive.attribute description="The label used for this object, will default to a message bundle if not supplied" name="labelPlural" required="false" rtexprvalue="true" type="java.lang.String"/>
+  <jsp:directive.attribute description="Indicate if the contents of this tag and all enclosed tags should be rendered (default 'true')" name="render" required="false" rtexprvalue="true" type="java.lang.Boolean"/>
+  <jsp:directive.attribute description="Control if the title pane is opened or closed by default (default: true)" name="openPane" required="false" rtexprvalue="true" type="java.lang.Boolean"/>
+  <jsp:directive.attribute description="Used for checking if element has been modified (to recalculate simply provide empty string value)" name="z" required="false" type="java.lang.String"/>
 
   <c:if test="${empty render or render}">
     <c:if test="${empty label}">
-      <spring:message code="label_${fn:toLowerCase(fn:substringAfter(id,'_'))}" var="label" htmlEscape="false" />
+      <spring:message code="label_${fn:toLowerCase(fn:substringAfter(id,'_'))}" htmlEscape="false" var="label"/>
     </c:if>
     <c:if test="${empty labelPlural}">
-      <spring:message code="label_${fn:toLowerCase(fn:substringAfter(id,'_'))}_plural" var="labelPlural" htmlEscape="false" />
+      <spring:message code="label_${fn:toLowerCase(fn:substringAfter(id,'_'))}_plural" htmlEscape="false" var="labelPlural"/>
     </c:if>
-    <spring:message arguments="${labelPlural}" code="entity_list_all" var="title_msg" htmlEscape="false" />
-    <util:panel id="${id}" title="${title_msg}" openPane="${openPane}">
+    <spring:message arguments="${labelPlural}" code="entity_list_all" htmlEscape="false" var="title_msg"/>
+    <util:panel id="${id}" openPane="${openPane}" title="${title_msg}">
       <c:choose>
         <c:when test="${not empty items}">
-          <jsp:doBody />
-        </c:when>
+          <jsp:doBody/>
+        <c:catch>
+                        <c:if test="${not empty items[0].reportable}">
+                            <spring:message code="jasperoo_reports" htmlEscape="false" var="reports_label"/>
+                            <b>
+                                <c:out value="${reports_label} "/>
+                            </b>
+                        </c:if>
+                    </c:catch>
+                <c:catch>
+                        <c:if test="${not empty items[0].reportable}">
+                            <span style="text-align:right;"/>
+                            <spring:url value="/reports/${fn:toLowerCase(label)}List/pdf" var="report_url"/>
+                            <c:if test="${not empty username}">
+                              <spring:url value="/reports/${username}/${fn:toLowerCase(label)}List/pdf" var="report_url"/>
+                            </c:if>
+                            <spring:url value="/resources/images/report-pdf.png" var="report_image_url"/>
+                            <spring:message arguments="${label}" code="entity_list_report" htmlEscape="false" var="report_label"/>
+                            <a alt="${fn:escapeXml(report_label)}" href="${fn:escapeXml(report_url)}" title="${fn:escapeXml(report_label)}">
+                                <img alt="${fn:escapeXml(report_label)}" class="image" src="${fn:escapeXml(report_image_url)}" title="${fn:escapeXml(report_label)}"/>
+                            </a>
+                        </c:if>
+                    </c:catch>
+                <c:catch>
+                        <c:if test="${not empty items[0].reportable}">
+                            <span style="text-align:right;"/>
+                            <spring:url value="/reports/${fn:toLowerCase(label)}List/xls" var="report_url"/>
+                            <c:if test="${not empty username}">
+                              <spring:url value="/reports/${username}/${fn:toLowerCase(label)}List/xls" var="report_url"/>
+                            </c:if>
+                            <spring:url value="/resources/images/report-xls.png" var="report_image_url"/>
+                            <spring:message arguments="${label}" code="entity_list_report" htmlEscape="false" var="report_label"/>
+                            <a alt="${fn:escapeXml(report_label)}" href="${fn:escapeXml(report_url)}" title="${fn:escapeXml(report_label)}">
+                                <img alt="${fn:escapeXml(report_label)}" class="image" src="${fn:escapeXml(report_image_url)}" title="${fn:escapeXml(report_label)}"/>
+                            </a>
+                        </c:if>
+                    </c:catch>
+                </c:when>
         <c:otherwise>
-          <spring:message arguments="${label}" code="entity_not_found" />
+          <spring:message arguments="${label}" code="entity_not_found"/>
         </c:otherwise>
       </c:choose>
     </util:panel>

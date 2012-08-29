@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bottomMargin="20" columnWidth="752" leftMargin="20" name="recordReportList" orientation="Landscape" pageHeight="612" pageWidth="792" resourceBundle="jasperoo" rightMargin="20" topMargin="20" whenResourceMissingType="Key" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="com.mycompany.runfun.domain.Land"/>
+    <import value="com.mycompany.runfun.domain.User"/>
+    <field class="java.lang.Long" name="id"/>
+	<field class="java.util.Date" name="date"/>
+    <field class="com.mycompany.runfun.domain.Land" name="land"/>
+    <field class="com.mycompany.runfun.domain.User" name="user"/>
+    <field class="java.lang.Integer" name="laps"/>
+    <field class="java.lang.Long" name="time"/>
+    <field class="java.lang.String" name="comment"/>
+    <pageHeader>
+		<band height="101">
+<!--			<image hAlign="Center" scaleImage="RetainShape">
+				<reportElement height="70" width="752" x="0" y="0"/>
+				<imageExpression class="java.lang.String"><![CDATA["../../images/banner-graphic.png"]]></imageExpression>
+			</image>-->
+			<textField>
+				<reportElement forecolor="#000000" height="31" mode="Opaque" width="752" x="0" y="70"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="FreeSerif" isBold="true" isItalic="false" isPdfEmbedded="true" size="24"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$R{label_com_mycompany_runfun_domain_record_plural}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<!-- Edit this band with entries for each field that is to be displayed in the report. -->
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement height="20" width="30" x="0" y="0"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String">$R{jasperoo.id}</textFieldExpression>
+			</textField>
+		<textField>
+                <reportElement height="20" width="120" x="30" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">$R{jasperoo.Records.date}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="150" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">$R{jasperoo.Records.land}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="270" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">$R{jasperoo.Records.user}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="390" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">$R{jasperoo.Records.laps}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="510" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">$R{jasperoo.Records.time}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="630" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">$R{jasperoo.Records.comment}</textFieldExpression>
+            </textField>
+        </band>
+	</columnHeader>
+	<detail>
+		<!-- Edit this band with entries for each field that is to be displayed in the report. -->
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement height="20" width="30" x="0" y="0"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Long">$F{id}</textFieldExpression>
+			</textField>
+		<textField>
+                <reportElement height="20" width="120" x="30" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.util.Date">$F{date}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="150" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">$F{land}.toString()</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="270" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">$F{user}.toString()</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="390" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.Integer">$F{laps}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="510" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.Long">$F{time}</textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement height="20" width="120" x="630" y="0"/>
+                <textElement/>
+                <textFieldExpression class="java.lang.String">$F{comment}</textFieldExpression>
+            </textField>
+        </band>
+	</detail>
+	<pageFooter>
+		<band height="25">
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement height="20" width="115" x="0" y="0"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement height="20" width="80" x="632" y="0"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement height="20" width="40" x="712" y="0"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
