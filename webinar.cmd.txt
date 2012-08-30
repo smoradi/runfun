@@ -12,8 +12,14 @@ git diff
 git diff --staged
 git add .
 git commit
+git remote add origin git@github.com:smoradi/runfun.git
+git push origin master
+
 
 # Maven commands
 mvn clean test
 mvn jetty:run
 mvn eclipse:eclipse
+
+# Other executed commands
+ssh-keygen
