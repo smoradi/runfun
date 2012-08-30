@@ -14,7 +14,7 @@ git add .
 git commit
 git remote add origin git@github.com:smoradi/runfun.git
 git push origin master
-
+git push heroku prod_heroku:master
 
 # Maven commands
 mvn clean test
@@ -23,3 +23,11 @@ mvn eclipse:eclipse
 
 # Other executed commands
 ssh-keygen
+ # In prod_heroku branch
+lynx https://devcenter.heroku.com/articles/spring-mvc-hibernate
+. export_DATABASE_URL.sh
+mvn package
+java -jar target/dependency/jetty-runner.jar --port 8080 target/*.war
+heroku create
+heroku rename runfun
+heroku keys:add
