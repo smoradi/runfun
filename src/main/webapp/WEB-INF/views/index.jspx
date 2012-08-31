@@ -15,6 +15,9 @@
     </h3>
     <p>
       <spring:message code="welcome_text" />
+      <br />
+      <spring:url value="/resources/webinar.ppt.html" var="webinar_ppt_url"/>
+      Select following link to see <a href="${webinar_ppt_url}">Webinar.ppt.html</a>
     </p>
   </util:panel>
   <util:panel id="enter" title="Enter here">
