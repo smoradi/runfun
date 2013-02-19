@@ -43,7 +43,7 @@ public class Record {
     private String comment;
 
     public static List<Record> findRecordEntries(User user, int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM Record o WHERE o.user = :user", Record.class).setParameter("user", user).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM Record o WHERE o.user = :user ORDER BY o.date DESC", Record.class).setParameter("user", user).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
 
     public static long countRecords(User user) {
